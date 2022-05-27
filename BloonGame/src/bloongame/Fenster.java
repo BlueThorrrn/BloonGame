@@ -55,6 +55,7 @@ public class Fenster extends JFrame{
        
         buttonrest.addActionListener((ActionEvent ae) -> {  
             game.restartGame();
+            
         });
     }
     

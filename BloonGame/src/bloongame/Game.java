@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 // Bloondelte in Lamda vom btn durch bloonList.remove(this);    
@@ -16,6 +17,7 @@ public class Game extends JPanel{
     private ArrayList<Bloon> bloonList = new ArrayList<Bloon>();
     private ArrayList<Bloon> deleteList = new ArrayList<Bloon>();
     private Statistik statistik = new Statistik();
+    private JLabel lblEnd = new JLabel();
     private Random rnd = new Random();
     private Timer t;
     private int time = 0;
@@ -23,7 +25,7 @@ public class Game extends JPanel{
     private int points = 0;
     private int bloonCounter = 0;
     private double spawnRate = 3.0; //Bloons pro 5sec
-   
+    private int highScore = 0;
     
     public Game(){
         this.setSize(780, 400);  
@@ -52,7 +54,8 @@ public class Game extends JPanel{
             this.bloonBewegen(i);
             this.add(bloonList.get(i));
         }
-        statistik.refresh(this.time, this.leben, this.points);
+        this.newHighscore();
+        statistik.refresh(this.time, this.leben, this.points, this.highScore);
         this.time += t.getInitialDelay();        
         this.newBloons();       
         this.repaint();
@@ -150,6 +153,12 @@ public class Game extends JPanel{
         }        
     }
     
+    public void newHighscore(){
+        if(this.points > this.highScore){
+            this.highScore = this.points;
+        }
+    }
+    
     public void drawLine(){  // als Animation wenn Bloon zerstört wird
        
     }    
@@ -181,12 +190,19 @@ public class Game extends JPanel{
         t.restart();
     }  
     
+    //buged
     public void endScene(){
-        // Endstats + ieleicht animation (eigenes Panel?)
+        this.removeAll();
+        this.repaint();
+        lblEnd.setSize(580, 200);
+        lblEnd.setLocation(100, 100);
+        lblEnd.setBackground(Color.red);
+        lblEnd.setOpaque(true);
+        lblEnd.setText("Verloren");
+        this.add(lblEnd);
+        this.repaint();
+        
+        
+        
     }
- 
-   
-    
-    
-    
 }
