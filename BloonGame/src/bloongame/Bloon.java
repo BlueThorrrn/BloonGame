@@ -112,8 +112,7 @@ public class Bloon extends JLabel{
     
     public int getSpawnTime() {
         return spawnTime;
-    }
-   
+    }   
     // überarbeiten
     
     public void setWerte(int max){        
@@ -123,7 +122,6 @@ public class Bloon extends JLabel{
 
     private ImageIcon ImageIcon(URL resource) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }   
     
 }

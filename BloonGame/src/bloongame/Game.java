@@ -68,7 +68,7 @@ public class Game extends JPanel{
   
         newBloon.addMouseListener(new MouseAdapter() { 
             public void mousePressed(MouseEvent me) { 
-               addBloonCounter(); 
+                addBloonCounter(); 
                 addPoints(4 - newBloon.getDmg());   
                 deleteList.add(newBloon); 
                 remove(newBloon); 
@@ -201,8 +201,6 @@ public class Game extends JPanel{
         lblEnd.setText("Verloren");
         this.add(lblEnd);
         this.repaint();
-        
-        
         
     }
 }
