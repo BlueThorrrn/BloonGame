@@ -11,7 +11,7 @@ public class Statistik extends JPanel {
     private JLabel lblLeben = new JLabel();
     private JLabel lblPoints = new JLabel();
     private JLabel lblHighScore = new JLabel(); 
-    private int ablage = 100;
+    private int ablage = 20;
     private int counter = 100;
     
 
