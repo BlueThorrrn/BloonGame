@@ -13,7 +13,7 @@ public class Bloon extends JLabel{
    private int richtungX;
    private int richtungY;
    private int spawnTime;
-    private int dmg;
+   private int dmg;
    Random rnd = new Random();
    private int[] sign = {1, -1};
    

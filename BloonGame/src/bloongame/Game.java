@@ -26,6 +26,7 @@ public class Game extends JPanel{
     private int bloonCounter = 0;
     private double spawnRate = 3.0; //Bloons pro 5sec
     private int highScore = 0;
+    private double difficulty;
     
     public Game(){
         this.setSize(780, 400);  
@@ -134,7 +135,7 @@ public class Game extends JPanel{
     
     public void spawnRate(){
         if (spawnRate <= 8) {
-            this.spawnRate = spawnRate + 0.1;            
+            this.spawnRate = spawnRate + (0.1*difficulty);            
         }        
     }
     
@@ -163,6 +164,10 @@ public class Game extends JPanel{
        
     }    
 
+    public void changeDiff(double difficulty) {
+        this.difficulty = difficulty;
+        statistik.changeDiff(this.difficulty);
+    }
     public void endGame() {        
         this.t.stop();
     }
