@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+//changeDiff in refresh()
+
 public class Statistik extends JPanel {
 
     private JLabel lblTime = new JLabel();

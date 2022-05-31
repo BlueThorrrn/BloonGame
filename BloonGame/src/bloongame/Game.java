@@ -10,21 +10,21 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-// Bloondelte in Lamda vom btn durch bloonList.remove(this);    
+// 139   
 
 public class Game extends JPanel{
     
     private ArrayList<Bloon> bloonList = new ArrayList<Bloon>();
     private ArrayList<Bloon> deleteList = new ArrayList<Bloon>();
-    private Statistik statistik = new Statistik();
-    private JLabel lblEnd = new JLabel();
+    private Statistik statistik = new Statistik();   
+    private JPanel endPanel;
     private Random rnd = new Random();
     private Timer t;
     private int time = 0;
-    private int leben = 20;
+    private int leben = 20; 
     private int points = 0;
     private int bloonCounter = 0;
-    private double spawnRate = 3.0; //Bloons pro 5sec
+    private int spawnRate = 30; 
     private int highScore = 0;
     private double difficulty;
     private int speed; 
@@ -80,7 +80,7 @@ public class Game extends JPanel{
     }
     
     public void newBloons(){        
-        if(rnd.nextInt(100) <= this.spawnRate){
+        if(rnd.nextInt(1000) <= this.spawnRate){
             this.createBloon();
             this.spawnRate();
         }        
@@ -135,8 +135,8 @@ public class Game extends JPanel{
     }
     
     public void spawnRate(){
-        if (spawnRate <= 8) {
-            this.spawnRate = spawnRate + (0.1*difficulty);            
+        if (spawnRate <= 80) {
+            this.spawnRate = (int) (spawnRate + difficulty);   //könnte buggen wegen int und double !!         
         }        
     }
     
@@ -179,7 +179,8 @@ public class Game extends JPanel{
     }
     
     public void endGame() {        
-        this.t.stop();
+        this.t.stop();  
+        this.endScene();
     }
     
     public void pauseGame(){
@@ -194,28 +195,24 @@ public class Game extends JPanel{
         t.stop();        
         for (int i = 0; i < bloonList.size(); i++) {
             this.remove(bloonList.get(i));            
-        }    
+        }  
+        this.remove(endPanel);
         this.repaint();    
         this.bloonList.clear();        
         time = 0;
         leben = 20;
         points = 0;
         bloonCounter = 0;
-        spawnRate = 3.0; 
+        spawnRate = 30; 
         t.restart();
     }  
     
     //buged
-    public void endScene(){
-        this.removeAll();
-        this.repaint();
-        lblEnd.setSize(580, 200);
-        lblEnd.setLocation(100, 100);
-        lblEnd.setBackground(Color.red);
-        lblEnd.setOpaque(true);
-        lblEnd.setText("Verloren");
-        this.add(lblEnd);
-        this.repaint();
-        
+    public void endScene(){     
+        //EndPanel        
+        endPanel = new EndPanel(this.points, this.highScore, this.time);
+        endPanel.setLocation(50, 50);
+        this.add(endPanel);
+        this.repaint();        
     }
 }
