@@ -64,6 +64,13 @@ public class Game extends JPanel{
     }    
     
     public void createBloon(){
+        if (difficulty == 0.75) {
+            speed = -3;      
+        } else if ( difficulty == 1.5) {
+            speed = 5;
+        }else if (difficulty == 1){
+            speed = 0;
+        }
         Bloon newBloon = new Bloon(rnd.nextInt(3),speed);               
         newBloon.setLocation(rnd.nextInt(this.getWidth() - statistik.getWidth() - 60)+30, rnd.nextInt(this.getHeight() - 60)+30);   
         newBloon.setSpawnTime(this.time);
@@ -168,13 +175,7 @@ public class Game extends JPanel{
     public void changeDiff(double difficulty) {
         this.difficulty = difficulty;
         statistik.changeDiff(this.difficulty);
-        if (difficulty == 0.75) {
-            speed = -2;      
-        } else if ( difficulty == 1.5) {
-            speed = 2;
-        }else if (difficulty == 1){
-            speed = 0;
-        }
+        
         
     }
     
