@@ -123,11 +123,13 @@ public class Bloon extends JLabel{
 
     public void changeSpeed(double difficulty){
         if (difficulty == 0.75) {
-            speed = -2;       
-        } else if ( difficulty == 1.5) {
-            speed = 2; 
-        }else if (difficulty == 1){
+            speed = -1;       
+        }
+        else if (difficulty == 1){
             speed = 0; 
+        }
+        else if ( difficulty == 1.5) {
+            speed = 1; 
         }
     }
     private ImageIcon ImageIcon(URL resource) {
