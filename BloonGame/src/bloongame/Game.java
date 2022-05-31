@@ -27,6 +27,7 @@ public class Game extends JPanel{
     private double spawnRate = 3.0; //Bloons pro 5sec
     private int highScore = 0;
     private double difficulty;
+    private int speed; 
     
     public Game(){
         this.setSize(780, 400);  
@@ -63,10 +64,10 @@ public class Game extends JPanel{
     }    
     
     public void createBloon(){
-        Bloon newBloon = new Bloon(rnd.nextInt(3));               
+        Bloon newBloon = new Bloon(rnd.nextInt(3),speed);               
         newBloon.setLocation(rnd.nextInt(this.getWidth() - statistik.getWidth() - 60)+30, rnd.nextInt(this.getHeight() - 60)+30);   
         newBloon.setSpawnTime(this.time);
-  
+        
         newBloon.addMouseListener(new MouseAdapter() { 
             public void mousePressed(MouseEvent me) { 
                 addBloonCounter(); 
@@ -167,7 +168,16 @@ public class Game extends JPanel{
     public void changeDiff(double difficulty) {
         this.difficulty = difficulty;
         statistik.changeDiff(this.difficulty);
+        if (difficulty == 0.75) {
+            speed = -2;      
+        } else if ( difficulty == 1.5) {
+            speed = 2;
+        }else if (difficulty == 1){
+            speed = 0;
+        }
+        
     }
+    
     public void endGame() {        
         this.t.stop();
     }
