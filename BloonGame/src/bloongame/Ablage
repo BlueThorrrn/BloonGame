@@ -21,6 +21,8 @@
     Damageanimation --
     endscreen --
     Spawnrate auf ints setzen -- !
+    bloon setWerte() fixen !!!!!!!
+    Hitrate tracken und clicks
     highscoreanimation
     bloon hit animation
     Winde, Wolken etc.
