@@ -14,11 +14,12 @@ public class Bloon extends JLabel{
    private int richtungY;
    private int spawnTime;
    private int dmg;
+   private int speed;
    Random rnd = new Random();
    private int[] sign = {1, -1};
    
-   
-   public Bloon(int typ){
+   public Bloon(int typ, int difficulty){
+       this.speed = difficulty;
        switch(typ){
             case 0:
                 this.sBloon();
@@ -116,10 +117,19 @@ public class Bloon extends JLabel{
     // überarbeiten
     
     public void setWerte(int max){        
-        this.richtungX = (rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)];
-        this.richtungY = (rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)];        
+        this.richtungX = (int)(rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)] + speed;
+        this.richtungY = (int)(rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)] + speed;        
     }
 
+    public void changeSpeed(double difficulty){
+        if (difficulty == 0.75) {
+            speed = -2;       
+        } else if ( difficulty == 1.5) {
+            speed = 2; 
+        }else if (difficulty == 1){
+            speed = 0; 
+        }
+    }
     private ImageIcon ImageIcon(URL resource) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }   
