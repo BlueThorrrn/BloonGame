@@ -55,7 +55,7 @@ public class Statistik extends JPanel {
         this.add(lblHighScore);
         
         //Schwierigkeit
-        lblDiff.setSize(80, 40);
+        lblDiff.setSize(80, 50);
         lblDiff.setLocation(10, 130);
         lblDiff.setBackground(Color.LIGHT_GRAY);
         lblDiff.setOpaque(true);
