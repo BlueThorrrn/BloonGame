@@ -117,8 +117,8 @@ public class Bloon extends JLabel{
     // überarbeiten
     
     public void setWerte(int max){        
-        this.richtungX = (int)(rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)] + speed;
-        this.richtungY = (int)(rnd.nextInt(max)+1)*sign[rnd.nextInt(sign.length)] + speed;        
+        this.richtungX = (int)((rnd.nextInt(max)+1)+speed)*sign[rnd.nextInt(sign.length)];
+        this.richtungY = (int)((rnd.nextInt(max)+1)+speed)*sign[rnd.nextInt(sign.length)];        
     }
 
     public void changeSpeed(double difficulty){
