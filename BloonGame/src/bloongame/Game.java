@@ -28,6 +28,7 @@ public class Game extends JPanel{
     private int highScore = 0;
     private double difficulty;
     private int speed; 
+    private boolean isEnded = false;
     
     public Game(){
         this.setSize(780, 400);  
@@ -132,15 +133,10 @@ public class Game extends JPanel{
         if(rnd.nextInt(100) <= 20 && this.bloonList.get(a).getSpawnTime() + 2000 <= this.time){
             this.remove(this.bloonList.get(a));
             deleteList.add(this.bloonList.get(a));
-            this.removeLeben(this.bloonList.get(a).getDmg());
-            this.damageAnimation();
+            this.removeLeben(this.bloonList.get(a).getDmg());           
         } 
     }  
-    
-    public void damageAnimation(){        
         
-    }
-    
     public void spawnRate(){
         if (spawnRate <= 80) {
             this.spawnRate = (int) (spawnRate * difficulty);   //könnte buggen wegen int und double !!         
@@ -168,20 +164,15 @@ public class Game extends JPanel{
         }
     }
     
-    public void drawLine(){  // als Animation wenn Bloon zerstört wird
-       
-    }    
-
     public void changeDiff(double difficulty) {
         this.difficulty = difficulty;
-        statistik.changeDiff(this.difficulty);
-        
-        
+        statistik.changeDiff(this.difficulty);  
     }
     
     public void endGame() {        
         this.t.stop();  
-        this.endScene();
+        isEnded = true;
+        this.endScene();        
     }
     
     public void pauseGame(){
@@ -197,7 +188,10 @@ public class Game extends JPanel{
         for (int i = 0; i < bloonList.size(); i++) {
             this.remove(bloonList.get(i));            
         }  
-        this.remove(endPanel);
+        if(isEnded){
+            this.remove(endPanel);
+        }       
+        isEnded = false;
         this.repaint();    
         this.bloonList.clear();        
         time = 0;
