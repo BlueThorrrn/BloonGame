@@ -13,7 +13,8 @@ public class Statistik extends JPanel {
     private JLabel lblLeben = new JLabel();
     private JLabel lblPoints = new JLabel();
     private JLabel lblHighScore = new JLabel(); 
-    private JLabel lblDiff = new JLabel(); 
+    private JLabel lblDiffText = new JLabel(); 
+    private JLabel lblDiff = new JLabel();
     private int ablage = 20;
     private int counter = 100;
     private double difficulty;
@@ -54,14 +55,21 @@ public class Statistik extends JPanel {
         lblHighScore.setText("n/a");
         this.add(lblHighScore);
         
-        //Schwierigkeit
-        lblDiff.setSize(80, 50);
-        lblDiff.setLocation(10, 130);
+        //Difficulty Text
+        lblDiffText.setSize(80, 20);
+        lblDiffText.setLocation(10, 130);
+        lblDiffText.setBackground(Color.LIGHT_GRAY);
+        lblDiffText.setOpaque(true);
+        lblDiffText.setText("n/a");
+        this.add(lblDiffText);
+        
+        //Difficulty
+        lblDiff.setSize(80, 20);
+        lblDiff.setLocation(10, 160);
         lblDiff.setBackground(Color.LIGHT_GRAY);
         lblDiff.setOpaque(true);
         lblDiff.setText("n/a");
         this.add(lblDiff);
-        
     }
     
     public void refresh(int time, int leben, int points, int highScore){
@@ -69,6 +77,7 @@ public class Statistik extends JPanel {
         lblLeben.setText("Leben : " + leben + "");
         lblPoints.setText("Points : " + points + "");
         lblHighScore.setText("Highscore : " + highScore);
+        lblDiffText.setText("  Difficulty:  ");
         
         if(ablage> leben){
             this.counter = 0;
@@ -94,11 +103,11 @@ public class Statistik extends JPanel {
     public void changeDiff(double difficulty) {
         this.difficulty = difficulty;
         if (difficulty == 0.75) {
-            lblDiff.setText("Schwierigkeit: \n Leicht");
+            lblDiff.setText("Leicht");
         } else if ( difficulty == 1.5) {
-            lblDiff.setText("Schwierigkeit: \n Schwer");
+            lblDiff.setText("Schwer");
         }else if (difficulty == 1){
-            lblDiff.setText("Schwierigkeit: \n Normal");
+            lblDiff.setText("Normal");
         }else{
             lblDiff.setText("Stat not equaldiff");
         };
