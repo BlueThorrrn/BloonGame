@@ -24,7 +24,7 @@ public class Game extends JPanel{
     private int leben = 20; 
     private int points = 0;
     private int bloonCounter = 0;
-    private int spawnRate = 30; 
+    private int spawnRate = 32; 
     private int highScore = 0;
     private double difficulty;
     private int speed; 
@@ -143,7 +143,7 @@ public class Game extends JPanel{
     
     public void spawnRate(){
         if (spawnRate <= 80) {
-            this.spawnRate = (int) (spawnRate + difficulty);   //könnte buggen wegen int und double !!         
+            this.spawnRate = (int) (spawnRate * difficulty);   //könnte buggen wegen int und double !!         
         }        
     }
     
